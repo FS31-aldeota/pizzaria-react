@@ -1,0 +1,39 @@
+{
+    "sabores": [
+        {
+            "id": "1",
+            "nome": "Pizza de Peperoni",
+            "preco": 39.9,
+            "descricao": "Uma pizza muy buena",
+            "promocao": true
+        },
+        {
+            "id": "2",
+            "nome": "Pizza de Galinha",
+            "preco": 29.9,
+            "descricao": "Uma pizza muy buena",
+            "promocao": false
+        },
+        {
+            "id": "3",
+            "nome": "Pizza de Portuguesa",
+            "preco": 32.9,
+            "descricao": "Uma pizza muy buena",
+            "promocao": true
+        },
+        {
+            "id": "4",
+            "nome": "Pizza de Calabresa",
+            "preco": 32.9,
+            "descricao": "Uma pizza muy buena",
+            "promocao": true
+        },
+        {
+            "id": "5",
+            "nome": "Pizza de Marguerita",
+            "preco": 36.9,
+            "descricao": "Uma pizza muy buena",
+            "promocao": false
+        }
+    ]
+}
