@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <a>
+        <>
             <h1>Footer</h1>
             <a href="tel:+85987974616">celular</a>
             <a href="mailto:gleidson@gmail.com">email</a>
