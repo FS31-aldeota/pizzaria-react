@@ -8,6 +8,13 @@ const HomeContainer = styled.section`
         font-size: 36px;
         margin-bottom: 16px;
     }
+    & input{
+        width: 400px;
+        height: 60px;
+        padding-left: 26px;
+        border-radius: 40px;
+        border: 2px solid #6B0504;
+    }
     & .cards{
         display: flex;
         gap: 20px;
@@ -34,6 +41,8 @@ const HomeContainer = styled.section`
 const Home = () => {
 
     const [pizzas, setPizzas] = useState([]);
+    const [pizzasFiltradas, setPizzasFiltradas] = useState([]);
+    const [pesquisa, setPesquisa] = useState("");
 
     async function buscarSabores(){
         const request = await fetch("http://localhost:3000/sabores");
@@ -45,14 +54,28 @@ const Home = () => {
         buscarSabores();
     }, [])
 
+    useEffect(() => {
+        if(pesquisa){
+            setPizzasFiltradas([...pizzas.filter(pizza => pizza.nome.toLowerCase().includes(pesquisa.toLowerCase()))]);
+            return;
+        }
+        setPizzasFiltradas(pizzas);
+    }, [pesquisa, pizzas]);
 
     return (
         <HomeContainer>
+            <div>
+                <input 
+                    type="text" 
+                    placeholder="Procure um sabor..."
+                    onChange={(e) => setPesquisa(e.target.value)}
+                />
+            </div>
             <h1>Pizzas em destaque</h1>
             <ul className="cards">
                 {
-                    pizzas && pizzas.filter(p => p.promocao).map(p => (
-                        <li>
+                    pizzas && pizzasFiltradas.filter((p) => p.promocao).map((p, index) => (
+                        <li key={index}>
                             <img src="" alt="" />
                             <h5>{p.nome}</h5>
                             <p>{p.descricao}</p>
@@ -67,8 +90,8 @@ const Home = () => {
 
             <h1>Todos os sabores</h1>
             {
-                pizzas && pizzas.map(p => (
-                    <div>
+                pizzas && pizzas.map((p, index) => (
+                    <div key={index}>
                         {p.nome}
                     </div>
                 ))
